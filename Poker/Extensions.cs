@@ -7,6 +7,11 @@ namespace Poker
 {
 	public static class Extensions
 	{
+		/// <summary>
+		/// Get the numeric value of the card rank. Assumes Aces are high.
+		/// </summary>
+		/// <param name="rank">Card rank</param>
+		/// <returns>Integer value of the rank</returns>
 		public static int GetRankValue(this string rank)
 		{
 			if (Int32.TryParse(rank, out int result))
@@ -32,6 +37,10 @@ namespace Poker
 			}
 		}
 
+		/// <summary>
+		/// Prints the player to the <see cref="Console"/>. 
+		/// </summary>
+		/// <param name="player">Player to print</param>
 		public static void PrintPlayer(this Player player)
 		{
 			Console.WriteLine($"{player.PlayerName}:");
