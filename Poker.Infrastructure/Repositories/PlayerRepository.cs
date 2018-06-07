@@ -1,13 +1,14 @@
-﻿using Poker.Models;
+﻿using Poker.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Poker.Repositories
+namespace Poker.Infrastructure.Repositories
 {
 	/// <summary>
 	/// Repository for players entered in the game.
 	/// </summary>
-	public class PlayerRepository
+	public class PlayerRepository : IPlayerRepository
 	{
 		/// <summary>
 		/// List of active players entered by the user.
@@ -17,36 +18,10 @@ namespace Poker.Repositories
 		/// <summary>
 		/// Add player to the repository store.
 		/// </summary>
-		/// <param name="input">String data read from <see cref="Console"/> to parse into a <see cref="Player"/></param>
-		public void AddPlayer(string input)
+		/// <param name="player"><see cref="Player"/> to add to the store</param>
+		public void Add(Player player)
 		{
-			var parsedInput = input.Split(", ");
-
-			// First value entered should always be the player's name
-			Player newPlayer = new Player
-			{
-				PlayerName = parsedInput[0]
-			};
-
-			// Hands will always be 5 cards
-			for (int i = 1; i <= 5; i++)
-			{
-				// Use ToUpper to ensure consistency in data entered
-				var rank = parsedInput[i].Substring(0, parsedInput[i].Length - 1).ToUpper();
-				var suit = parsedInput[i].Substring(parsedInput[i].Length - 1, 1).ToUpper();
-
-				newPlayer.Cards.Add(new Card
-				{
-					Rank = rank,
-					RankValue = rank.GetRankValue(),
-					Suit = suit
-				});
-			}
-
-			// Order cards by rank to make it easier to read and parse
-			newPlayer.Cards = newPlayer.Cards.OrderBy(card => card.RankValue).ToList();
-
-			_players.Add(newPlayer);
+			_players.Add(player);
 		}
 
 		/// <summary>
@@ -136,6 +111,16 @@ namespace Poker.Repositories
 
 			var winners = playerMaxRanks.Where(map => map.Value == playerMaxRanks.Max(rank => rank.Value));
 			return _players.Where(player => winners.Select(winner => winner.Key).Contains(player)).ToList();
+		}
+
+		public List<Player> GetAll()
+		{
+			return _players;
+		}
+
+		public Player GetByName(string playerName)
+		{
+			return _players.FirstOrDefault(player => player.PlayerName.Equals(playerName, StringComparison.OrdinalIgnoreCase));
 		}
 	}
 }

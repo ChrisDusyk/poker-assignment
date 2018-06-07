@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using Poker.Models;
+using Poker.Core.Models;
 
-namespace Poker
+namespace Poker.Infrastructure
 {
 	public static class Extensions
 	{

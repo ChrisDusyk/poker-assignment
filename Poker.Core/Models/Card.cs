@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Poker.Models
+namespace Poker.Core.Models
 {
 	/// <summary>
 	/// Represents a card in the player's hand.
