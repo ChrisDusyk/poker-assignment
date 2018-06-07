@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using Poker.Models;
 
 namespace Poker
@@ -43,14 +44,10 @@ namespace Poker
 		/// <param name="player">Player to print</param>
 		public static void PrintPlayer(this Player player)
 		{
-			Console.WriteLine($"{player.PlayerName}:");
-			Console.Write("  ");
+			Console.Write($"  {player.PlayerName}: ");
 
-			foreach (var card in player.Cards)
-			{
-				Console.Write($"{card.Rank}{card.Suit} ");
-			}
-			Console.WriteLine();
+			string cardList = string.Join(", ", player.Cards.Select(card => $"{card.Rank}{card.Suit}"));
+			Console.WriteLine(cardList);
 
 		}
 	}
