@@ -45,4 +45,4 @@ Based on the assignment, the following hands are checked for:
 
 ### Sample Output
 
-![Output Sample](Poker/Output Sample.png)
+![Output Sample](https://github.com/ChrisDusyk/poker-assignment/blob/master/Poker/Output%20Sample.png "Sample Output")
