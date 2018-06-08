@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
-using Poker.Core.Models;
 
-namespace Poker.Infrastructure
+namespace Poker.Core
 {
-	public static class Extensions
+	public static class ModelExtensions
 	{
 		/// <summary>
 		/// Get the numeric value of the card rank. Assumes Aces are high.
@@ -36,19 +34,6 @@ namespace Poker.Infrastructure
 						return 0;
 				}
 			}
-		}
-
-		/// <summary>
-		/// Prints the player to the <see cref="Console"/>. 
-		/// </summary>
-		/// <param name="player">Player to print</param>
-		public static void PrintPlayer(this Player player)
-		{
-			Console.Write($"  {player.PlayerName}: ");
-
-			string cardList = string.Join(", ", player.Cards.Select(card => $"{card.Rank}{card.Suit}"));
-			Console.WriteLine(cardList);
-
 		}
 	}
 }

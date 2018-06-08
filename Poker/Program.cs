@@ -47,7 +47,7 @@ namespace Poker
 			
 			foreach (var player in winners)
 			{
-				player.PrintPlayer();
+				PrintPlayer(player);
 			}
 
 			Console.WriteLine();
@@ -79,7 +79,6 @@ namespace Poker
 				newPlayer.Cards.Add(new Card
 				{
 					Rank = rank,
-					RankValue = rank.GetRankValue(),
 					Suit = suit
 				});
 			}
@@ -88,6 +87,18 @@ namespace Poker
 			newPlayer.Cards = newPlayer.Cards.OrderBy(card => card.RankValue).ToList();
 
 			return newPlayer;
+		}
+
+		/// <summary>
+		/// Prints the player to the <see cref="Console"/>. 
+		/// </summary>
+		/// <param name="player">Player to print</param>
+		public static void PrintPlayer(Player player)
+		{
+			Console.Write($"  {player.PlayerName}: ");
+
+			string cardList = string.Join(", ", player.Cards.Select(card => $"{card.Rank}{card.Suit}"));
+			Console.WriteLine(cardList);
 		}
 	}
 }
