@@ -10,9 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Core", "Poker.Core\Poker.Core.csproj", "{44F326F9-26D0-4DBC-89F8-6DBE883C5353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Core", "Poker.Core\Poker.Core.csproj", "{44F326F9-26D0-4DBC-89F8-6DBE883C5353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Infrastructure", "Poker.Infrastructure\Poker.Infrastructure.csproj", "{22E2016F-F6B6-402A-A893-BF1B0FFBEC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Infrastructure", "Poker.Infrastructure\Poker.Infrastructure.csproj", "{22E2016F-F6B6-402A-A893-BF1B0FFBEC8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Tests", "Poker.Tests\Poker.Tests.csproj", "{D7D41A98-7F9E-4F49-9DE0-786EFA4888C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{22E2016F-F6B6-402A-A893-BF1B0FFBEC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22E2016F-F6B6-402A-A893-BF1B0FFBEC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22E2016F-F6B6-402A-A893-BF1B0FFBEC8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7D41A98-7F9E-4F49-9DE0-786EFA4888C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D41A98-7F9E-4F49-9DE0-786EFA4888C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D41A98-7F9E-4F49-9DE0-786EFA4888C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D41A98-7F9E-4F49-9DE0-786EFA4888C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,7 +17,7 @@ namespace Poker.Core.Models
 		/// <summary>
 		/// Numeric value of the card rank for sorting and High Card checks
 		/// </summary>
-		public int RankValue { get; set; }
+		public int RankValue => Rank.GetRankValue();
 
 		/// <summary>
 		/// Card suit (Heart, Diamond, Spade, Club)

@@ -6,6 +6,7 @@ Allows users to enter several players and hands into a Console GUI, and outputs 
 
 - Visual Studio 2017
 - .NET Core 2.0 Console App
+- MSTest unit testing project
 
 ### Source Code
 
@@ -33,6 +34,8 @@ Based on the assignment, the following hands are checked for:
 2. Enter each player and hand in the following format: "[name], [card1], [card2], [card3], [card4], [card5]" (see Sample Data)
 3. Press enter once the player and their hand have been entered to progress to next line, to input the next player
 3. Once done entering all players and hands, enter a lower-case 'q' on the next line and press Enter
+
+Sample data can also be tested in the Poker.Tests project, using Visual Studio's Test Explorer.
 
 ### Sample Data
 
