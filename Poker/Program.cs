@@ -5,6 +5,7 @@ using Poker.Core.Models;
 using Poker.Infrastructure;
 using Poker.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
+using Poker.Infrastructure.Workflow;
 
 namespace Poker
 {
@@ -15,9 +16,12 @@ namespace Poker
 			// Setup dependency injection for services
 			var serviceProvider = new ServiceCollection()
 				.AddSingleton<IPlayerRepository, PlayerRepository>()
+				.AddTransient<IGameManager, GameManager>()
 				.BuildServiceProvider();
 
 			var playerRepository = serviceProvider.GetService<IPlayerRepository>();
+			var gameManager = serviceProvider.GetService<IGameManager>();
+
 			bool moreInput = true;
 
 			Console.WriteLine("Please enter players (enter q to continue):");
@@ -36,7 +40,7 @@ namespace Poker
 				}
 			} while (moreInput);
 
-			(var winners, var reason) = playerRepository.GetWinners();
+			(var winners, var reason) = gameManager.GetWinners(playerRepository.GetAll());
 
 			Console.WriteLine();
 			Console.WriteLine($"Winner{(winners.Count > 1 ? "s" : "")} with {reason}:");
