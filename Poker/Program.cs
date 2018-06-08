@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Poker.Core;
 using Poker.Core.Models;
-using Poker.Infrastructure;
 using Poker.Infrastructure.Repositories;
-using Microsoft.Extensions.DependencyInjection;
 using Poker.Infrastructure.Workflow;
+using System;
+using System.Linq;
 
 namespace Poker
 {
-	class Program
+	internal class Program
 	{
-		static void Main(string[] args)
+		private static void Main(string[] args)
 		{
 			// Setup dependency injection for services
 			var serviceProvider = new ServiceCollection()
@@ -40,11 +39,11 @@ namespace Poker
 				}
 			} while (moreInput);
 
-			(var winners, var reason) = gameManager.GetWinners(playerRepository.GetAll());
+			(var winners, var hand) = gameManager.GetWinners(playerRepository.GetAll());
 
 			Console.WriteLine();
-			Console.WriteLine($"Winner{(winners.Count > 1 ? "s" : "")} with {reason}:");
-			
+			Console.WriteLine($"Winner{(winners.Count > 1 ? "s" : "")} with {hand.GetDescription()}:");
+
 			foreach (var player in winners)
 			{
 				PrintPlayer(player);
@@ -59,7 +58,7 @@ namespace Poker
 		/// </summary>
 		/// <param name="input">Inputted data from the Console</param>
 		/// <returns>Parsed <see cref="Player"/></returns>
-		static Player ParseInput(string input)
+		private static Player ParseInput(string input)
 		{
 			var parsedInput = input.Split(", ");
 
@@ -90,7 +89,7 @@ namespace Poker
 		}
 
 		/// <summary>
-		/// Prints the player to the <see cref="Console"/>. 
+		/// Prints the player to the <see cref="Console"/>.
 		/// </summary>
 		/// <param name="player">Player to print</param>
 		public static void PrintPlayer(Player player)

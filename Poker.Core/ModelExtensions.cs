@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace Poker.Core
@@ -34,6 +35,26 @@ namespace Poker.Core
 						return 0;
 				}
 			}
+		}
+
+		/// <summary>
+		/// Gets the Description attribute from the enum value if it exists. Otherwise it returns the enum value as a string.
+		/// </summary>
+		public static string GetDescription(this Enum enumValue)
+		{
+			Type enumType = enumValue.GetType();
+			MemberInfo[] memberInfo = enumType.GetMember(enumValue.ToString());
+
+			if (memberInfo != null && memberInfo.Length > 0)
+			{
+				var attribute = memberInfo[0].GetCustomAttribute(typeof(System.ComponentModel.DescriptionAttribute), false);
+				if (attribute != null)
+				{
+					return ((System.ComponentModel.DescriptionAttribute)attribute).Description;
+				}
+			}
+
+			return enumValue.ToString();
 		}
 	}
 }
