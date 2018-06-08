@@ -1,9 +1,6 @@
 ﻿using Poker.Core.Models;
-using Poker.Infrastructure.Repositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Poker.Infrastructure.Workflow
 {

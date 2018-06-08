@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Poker.Core
 {
@@ -25,12 +23,16 @@ namespace Poker.Core
 				{
 					case "J":
 						return 11;
+
 					case "Q":
 						return 12;
+
 					case "K":
 						return 13;
+
 					case "A":
 						return 14;
+
 					default:
 						return 0;
 				}
